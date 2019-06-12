@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="jumbotron " >
+    <h1 class="display-4">HOTEL 1 SEARCH WEB APP</h1>
+    <p class="lead">This is a simple hotel searching task</p>
+
+
+    <div class="container content" >
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Hotel Registeration</h2>
+                <form [formGroup]="booking" (ngSubmit)="registerHotel()">
+                    <div class="form-group">
+                        <label>Hotel Name</label>
+                        <input type="text" formControlName="hotelname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hotelname.errors }" />
+                        <div *ngIf="submitted && f.hotelname.errors" class="invalid-feedback">
+                            <div style="color:rebeccapurple" *ngIf="!booking.controls['hotelname'].errors.required">Hotel Name is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>No. of rooms</label>
+                        <input type="number" formControlName="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+                        <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                            <div *ngIf="!booking.controls['number'].errors.required">number of rooms is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input #search type="text" placeholder="islamabsd" formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+                        <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                            <div *ngIf="!booking.controls['location'].errors.required">Location is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button [disabled]="!booking.valid" class="btn btn-primary">Add Hotel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  </div>

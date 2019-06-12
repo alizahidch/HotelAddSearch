@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [zoom]="4" [latitude]="lat" [longitude]="lng">
+  <agm-marker  *ngFor="let m of markers"
+  [latitude]="m.lat" [longitude]="m.lon" (markerClick)="clickedMarker(m.hotel_name)"></agm-marker>
+</agm-map>
+
+<div class="content">
+  <ul>
+    <h3>HOTELS TEXTUAL</h3>
+    <li *ngFor="let m of markers">{{m.hotel_name}}</li>
+  </ul>
+</div>
